@@ -16,6 +16,7 @@ Description: Data package for WGBS Data in TCGA.
              differential methylation analysis.
 biocViews: Genome, SequencingData, ExperimentData, Homo_sapiens_Data, 
            CancerData
+BugReports: https://github.com/aryeelab/tcgaWGBSData.hg19/issues
 License: GPL-2
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
