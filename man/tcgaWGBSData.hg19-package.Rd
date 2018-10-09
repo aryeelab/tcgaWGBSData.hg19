@@ -34,10 +34,15 @@
     hub <- ExperimentHub()
     x <- query(hub, "tcgaWGBSData.hg19")
     \dontrun{
-    ## download resource
-    tcga_data <- x[["EH1661"]]
-    TCGA_bs <- x[["EH1662"]]
-    file.rename(from=tcga_data,to=paste0(dirname(tcga_data),'/assays.h5'))
+    tcga_data <- eh[["EH1661"]]
+    TCGA_bs <- eh[["EH1662"]]
+
+    assay_file <- tcga_data
+    rds_file <- paste0(dirname(tcga_data),'/1662')
+
+    file.rename(from=assay_file, to=paste0(dirname(tcga_data),'/assays.h5'))
+    file.rename(from=rds_file, to=paste0(dirname(tcga_data),'/se.rds'))
+    TCGA_bs <- HDF5Array::loadHDF5SummarizedExperiment(dirname(tcga_data))
   }}
 
 \keyword{utilities}

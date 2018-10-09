@@ -3,3 +3,4 @@ CHANGES IN VERSION 0.99.3
 
 PKG FEATURES
 - This is a data package containing Whole Genome Bisulfite Sequencing (WGBS) data from TCGA. 
+- See the vignette on how to extract the data via experiment hub and conducting downstream analysis.

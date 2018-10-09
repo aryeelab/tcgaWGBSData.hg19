@@ -8,7 +8,11 @@ Depends: R (>= 3.5.0),
          ExperimentHub
 Imports:
         bsseq,
-        knitr
+        knitr,
+        Biobase,
+        DelayedArray,
+        HDF5Array,
+        ggplot2
 Suggests:
 Description: Data package for WGBS Data in TCGA.
              Data is stored as SummarizedExperiment Format. 
