@@ -9,6 +9,7 @@ Depends: R (>= 3.5.0),
 Imports:
         bsseq,
         knitr,
+        rmarkdown,
         Biobase,
         DelayedArray,
         HDF5Array,

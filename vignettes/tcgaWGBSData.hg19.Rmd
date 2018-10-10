@@ -10,7 +10,7 @@ vignette: >
 ---
 
 ###Differential Methylation Analysis with Whole Genome Bisulfite Sequencing (WGBS) Data in TCGA
-```{r, warning=FALSE, message=FALSE, eval=TRUE}
+```{r, warning=FALSE, message=FALSE, eval=TRUE, cache=TRUE}
 library(ExperimentHub)
 eh = ExperimentHub()
 query(eh, "tcgaWGBSData.hg19")
