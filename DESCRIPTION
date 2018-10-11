@@ -23,5 +23,6 @@ biocViews: Genome, SequencingData, ExperimentData, Homo_sapiens_Data,
            CancerData
 BugReports: https://github.com/aryeelab/tcgaWGBSData.hg19/issues
 License: GPL-2
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
+Encoding: UTF-8
 VignetteBuilder: knitr
