@@ -11,6 +11,13 @@ vignette: >
 
 ###Differential Methylation Analysis with Whole Genome Bisulfite Sequencing (WGBS) Data in TCGA
 ```{r, warning=FALSE, message=FALSE, eval=TRUE, cache=TRUE}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+library(BiocManager)
+BiocManager::install("tcgaWGBSData.hg19", version = "devel")
+```
+
+```{r, warning=FALSE, message=FALSE, eval=TRUE, cache=TRUE}
 library(ExperimentHub)
 eh = ExperimentHub()
 query(eh, "tcgaWGBSData.hg19")
