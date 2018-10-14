@@ -30,10 +30,10 @@ TCGA_bs <- eh[["EH1662"]]
 
 tcga_eh_directory <- dirname(tcga_data)
 assay_file <- tcga_data
-rds_file <- paste0(tcga_eh_directory,'/1662')
+rds_file <- paste0(tcga_eh_directory, '/1662')
 
-file.rename(from=assay_file, to=paste0(tcga_eh_directory,'/assays.h5'))
-file.rename(from=rds_file, to=paste0(tcga_eh_directory,'/se.rds'))
+file.rename(from=assay_file, to=paste0(tcga_eh_directory, '/assays.h5'))
+file.rename(from=rds_file, to=paste0(tcga_eh_directory, '/se.rds'))
 TCGA_bs <- HDF5Array::loadHDF5SummarizedExperiment(tcga_eh_directory)
 ```
 
@@ -65,9 +65,11 @@ sampleType <- phenoData$sample.type
 Df <- data.frame('mean-methylation' = meanMethylation, 'type' = sampleType)
 
 g <- ggplot2::ggplot() 
-g <- g + ggplot2::geom_boxplot(data=Df,ggplot2::aes(x=type,y=mean.methylation))
+g <- g + ggplot2::geom_boxplot(data=Df, ggplot2::aes(x=type, y=mean.methylation))
 g <- g + ggplot2::xlab('sample type') + ggplot2::ylab('Mean methylation') 
 g <- g + ggplot2::theme(axis.text.x = element_text(angle = 0, hjust = 1))
+g <- g + ggplot2::ggtitle('Mean methylation comparison between 
+                          \n tumor and normal samples')
 g
 
 ```
@@ -87,11 +89,11 @@ group1 <- c(11, 6, 23) # normal samples
 group2 <- c(20, 26, 25) # Tumor samples
 subSample <- c(group1, group2)
 
-TCGA_bs_sub <- updateObject(TCGA_bs[chrIndex,subSample])
+TCGA_bs_sub <- updateObject(TCGA_bs[chrIndex, subSample])
 TCGA_bs_sub.fit <- bsseq::BSmooth(TCGA_bs_sub, mc.cores = 2, verbose = TRUE)
 TCGA_bs_sub.tstat <- bsseq::BSmooth.tstat(TCGA_bs_sub.fit, 
-                                group1 = c(1,2,3),
-                                group2 = c(4,5,6), 
+                                group1 = c(1, 2, 3),
+                                group2 = c(4, 5, 6), 
                                 estimate.var = "group2",
                                 local.correct = TRUE,
                                 verbose = TRUE)
