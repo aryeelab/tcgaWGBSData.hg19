@@ -10,21 +10,21 @@ vignette: >
 ---
 
 ###Differential Methylation Analysis with Whole Genome Bisulfite Sequencing (WGBS) Data in TCGA
-```{r, warning=FALSE, message=FALSE, eval=TRUE, cache=TRUE}
+```{r, warning=FALSE, message=FALSE, eval=FALSE, cache=TRUE}
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 library(BiocManager)
 BiocManager::install("tcgaWGBSData.hg19", version = "devel")
 ```
 
-```{r, warning=FALSE, message=FALSE, eval=TRUE, cache=TRUE}
+```{r, warning=FALSE, message=FALSE, eval=FALSE, cache=TRUE}
 library(ExperimentHub)
 eh = ExperimentHub()
 query(eh, "tcgaWGBSData.hg19")
 ```
 
 Data can be extracted in the following way:
-```{r, warning=FALSE, message=FALSE, cache=TRUE, eval=TRUE, results=FALSE}
+```{r, warning=FALSE, message=FALSE, cache=TRUE, eval=FALSE, results=FALSE}
 tcga_data <- eh[["EH1661"]]
 TCGA_bs <- eh[["EH1662"]]
 
@@ -39,7 +39,7 @@ TCGA_bs <- HDF5Array::loadHDF5SummarizedExperiment(tcga_eh_directory)
 
 
 Phenotypic data can be obtained using *pData* function in *Biobase*
-```{r, warning=FALSE, message=FALSE, eval=TRUE}
+```{r, warning=FALSE, message=FALSE, eval=FALSE}
 library(bsseq)
 phenoData <- bsseq::pData(TCGA_bs)
 head(phenoData)
@@ -47,7 +47,7 @@ head(phenoData)
 
 
 Methylation Comparison between normal and tumor samples
-```{r, warning=FALSE, message=FALSE, eval=TRUE, fig.height=5, fig.width=4}
+```{r, warning=FALSE, message=FALSE, eval=FALSE, fig.height=5, fig.width=4}
 library(ggplot2)
 
 cov_matrix <- bsseq::getCoverage(TCGA_bs)
@@ -80,7 +80,7 @@ As expected overall methylation is lower in tumor samples compared to the normal
 ## Differential methylation analysis of tumor samples
 
 In this analysis we are using functions from *bsseq* package to conduct the differntial methylation analysis.
-```{r, warning=FALSE, message=FALSE, eval=TRUE, fig.height=6, fig.width=5}
+```{r, warning=FALSE, message=FALSE, eval=FALSE, fig.height=6, fig.width=5}
 # In this analysis we restrict the data to just chromosome 22
 chrIndex <- seqnames(TCGA_bs) == 'chr22'
 
@@ -100,7 +100,7 @@ TCGA_bs_sub.tstat <- bsseq::BSmooth.tstat(TCGA_bs_sub.fit,
 plot(TCGA_bs_sub.tstat)
 ```
 
-```{r, warning=FALSE, message=FALSE, eval=TRUE, fig.height=3.5, fig.width=7}
+```{r, warning=FALSE, message=FALSE, eval=FALSE, fig.height=3.5, fig.width=7}
 dmrs0 <- bsseq::dmrFinder(TCGA_bs_sub.tstat, cutoff = c(-4.6, 4.6))
 dmrs <- subset(dmrs0, n >= 3 & abs(meanDiff) >= 0.1)
 nrow(dmrs)
