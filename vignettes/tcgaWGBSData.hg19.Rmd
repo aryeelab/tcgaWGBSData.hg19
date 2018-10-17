@@ -84,7 +84,7 @@ In this analysis we are using functions from *bsseq* package to conduct the diff
 # In this analysis we restrict the data to just chromosome 22
 chrIndex <- seqnames(TCGA_bs) == 'chr22'
 
-# Also we are only conducting the analysis for 3 normal, tumor pairs
+# Also we are only conducting the analysis for 3 normal and tumor pairs
 group1 <- c(11, 6, 23) # normal samples
 group2 <- c(20, 26, 25) # Tumor samples
 subSample <- c(group1, group2)
